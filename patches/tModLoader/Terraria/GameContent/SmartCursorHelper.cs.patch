@@ -8,17 +8,69 @@
  
  namespace Terraria.GameContent
  {
-@@ -201,7 +_,8 @@
+@@ -143,57 +_,60 @@
+ 			bool result = false;
+ 			if (Main.tile[providedInfo.screenTargetX, providedInfo.screenTargetY].active()) {
+ 				switch (Main.tile[providedInfo.screenTargetX, providedInfo.screenTargetY].type) {
++					/*
+ 					case 4:
+ 					case 10:
+ 					case 11:
+ 					case 13:
+ 					case 21:
+ 					case 29:
+ 					case 33:
+ 					case 49:
+ 					case 50:
+ 					case 55:
+ 					case 79:
+ 					case 85:
+ 					case 88:
+ 					case 97:
+ 					case 104:
+ 					case 125:
+ 					case 132:
+ 					case 136:
+ 					case 139:
+ 					case 144:
+ 					case 174:
+ 					case 207:
+ 					case 209:
+ 					case 212:
+ 					case 216:
+ 					case 219:
+ 					case 237:
+ 					case 287:
+ 					case 334:
+ 					case 335:
+ 					case 338:
+ 					case 354:
+ 					case 386:
+ 					case 387:
+ 					case 388:
+ 					case 389:
+ 					case 411:
+ 					case 425:
+ 					case 441:
+ 					case 463:
+ 					case 464:
+ 					case 467:
+ 					case 468:
+ 					case 491:
+ 					case 494:
+ 					case 510:
  					case 511:
  					case 573:
  					case 621:
+ 					case 642:
 -						result = true;
++					*/		
 +					default:
 +						result = TileID.Sets.DisableSmartCursor[Main.tile[providedInfo.screenTargetX, providedInfo.screenTargetY].type];
  						break;
  					case 314:
  						if (providedInfo.player.gravDir == 1f)
-@@ -1551,11 +_,13 @@
+@@ -1567,11 +_,13 @@
  					if ((tile.active() && !Main.tileCut[tile.type] && !TileID.Sets.BreakableWhenPlacing[tile.type]) || (tile2.active() && !Main.tileCut[tile2.type] && !TileID.Sets.BreakableWhenPlacing[tile2.type]) || (tile4.active() && TileID.Sets.CommonSapling[tile4.type]) || (tile5.active() && TileID.Sets.CommonSapling[tile5.type]) || (tile6.active() && TileID.Sets.CommonSapling[tile6.type]) || (tile7.active() && TileID.Sets.CommonSapling[tile7.type]) || (tile8.active() && TileID.Sets.CommonSapling[tile8.type]) || (tile9.active() && TileID.Sets.CommonSapling[tile9.type]) || !tile3.active() || !WorldGen.SolidTile2(tile3))
  						continue;
  
@@ -33,10 +85,10 @@
  						case 2:
  						case 23:
  						case 53:
-@@ -1567,19 +_,31 @@
- 						case 234:
- 						case 477:
- 						case 492:
+@@ -1586,19 +_,31 @@
+ 						case 633:
+ 						case 661:
+ 						case 662:
 -							if (tile4.liquid == 0 && tile.liquid == 0 && tile5.liquid == 0 && WorldGen.EmptyTileCheck(i - 2, i + 2, j - 20, j, 20))
 -								_targets.Add(new Tuple<int, int>(i, j));
 +							tileTypeValid = true;
@@ -67,7 +119,7 @@
  						switch (tile10.type) {
  							case 2:
  							case 23:
-@@ -2149,7 +_,7 @@
+@@ -2171,7 +_,7 @@
  			int reachableEndY = providedInfo.reachableEndY;
  			_ = providedInfo.screenTargetX;
  			_ = providedInfo.screenTargetY;

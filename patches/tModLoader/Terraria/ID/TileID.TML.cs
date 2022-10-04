@@ -20,10 +20,10 @@
 
 			/// <summary> Whether or not the smart cursor function is disabled when the cursor hovers above this tile. </summary>
 			// Maybe this should be a hook instead?
-			public static bool[] DisableSmartCursor = Factory.CreateBoolSet(4, 10, 11, 13, 21, 29, 33, 49, 50, 55, 79, 85, 88, 97, 104, 125, 132, 136, 139, 144, 174, 207, 209, 212, 216, 219, 237, 287, 334, 335, 338, 354, 386, 387, 388, 389, 411, 425, 441, 463, 467, 468, 491, 494, 510, 511, 573, 621);
+			public static bool[] DisableSmartCursor = Factory.CreateBoolSet(4, 10, 11, 13, 21, 29, 33, 49, 50, 55, 79, 85, 88, 97, 104, 125, 132, 136, 139, 144, 174, 207, 209, 212, 216, 219, 237, 287, 334, 335, 338, 354, 386, 387, 388, 389, 411, 425, 441, 463, 467, 468, 491, 494, 510, 511, 573, 621, 642);
 
 			/// <summary> Whether or not the smart tile interaction function is disabled when the cursor hovers above this tile. </summary>
-			public static bool[] DisableSmartInteract = Factory.CreateBoolSet(4, 33, 334, 395, 410, 455, 471, 480, 509, 520);
+			public static bool[] DisableSmartInteract = Factory.CreateBoolSet(4, 33, 334, 395, 410, 455, 471, 480, 509, 520, 657, 658);
 
 			/// <summary> Whether or not this tile is a valid spawn point. </summary>
 			public static bool[] IsValidSpawnPoint = Factory.CreateBoolSet(Beds);
