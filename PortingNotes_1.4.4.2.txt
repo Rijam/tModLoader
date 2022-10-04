@@ -11,6 +11,13 @@ ItemID.cs
 PlayerDrawLayers.cs:
 	- Re-ensure that all upper bound ID checks are gone, some patches had to be removed.
 	
+Check pylon hooks for player.InInteractionRange/IsTileTypeInInteractionRange and new TileReachCheckSettings.Pylons param
+
+axe of regrowth needs a lookup to the sapling type of a given modtree
+
+Check why we alter DrawData.useDestinationRectangle
+	https://github.com/tModLoader/tModLoader/commit/e38affeb6a121090555377c74eeed78c40280627
+	
 tModPorter:
 	- MessageID.SendNPCBuffs -> NPCBuffs
 	- MessageID.Unlock -> LockAndUnlock
