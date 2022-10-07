@@ -1,29 +1,35 @@
-//unknown justification for preventing odd window sizes. Causes excessive device resets. - ChickenBones
-//width &= 0x7FFFFFFE;
-//height &= 0x7FFFFFFE;
-			
-SoundEngine.cs
-	- PlayTrackedLoopedSound
-	
-ItemID.cs
-	- ExtractinatorMode (extractinator has changed in 1.4.4, chloro extractinator now exists)	
+# TODOs
 
-PlayerDrawLayers.cs:
-	- Re-ensure that all upper bound ID checks are gone, some patches had to be removed.
+## Etc.
 
-Tile(.TML).cs:
-	- Add all the properties "referenced" in the vanilla file - new liquid, invisibility, other stuff.
-	
-Check pylon hooks for player.InInteractionRange/IsTileTypeInInteractionRange and new TileReachCheckSettings.Pylons param
+- Check pylon hooks for player.InInteractionRange/IsTileTypeInInteractionRange and new TileReachCheckSettings.Pylons param
 
-axe of regrowth needs a lookup to the sapling type of a given modtree
+- Axe of regrowth needs a lookup to the sapling type of a given modtree
 
-Check why we alter DrawData.useDestinationRectangle
+- Check why we alter DrawData.useDestinationRectangle
 	https://github.com/tModLoader/tModLoader/commit/e38affeb6a121090555377c74eeed78c40280627
+
+-	```cs
+	//unknown justification for preventing odd window sizes. Causes excessive device resets. - ChickenBones
+	//width &= 0x7FFFFFFE;
+	//height &= 0x7FFFFFFE;
+	```
+
+## SoundEngine.cs
+- PlayTrackedLoopedSound
 	
-tModPorter:
-	- MessageID.SendNPCBuffs -> NPCBuffs
-	- MessageID.Unlock -> LockAndUnlock
-	- MessageID.StartPlaying -> InitialSpawn
-	- MessageID.SpawnBoss -> SpawnBossUseLicenseStartEvent
-	- MessageID.Teleport -> TeleportEntity
+## ItemID.cs
+- ExtractinatorMode (extractinator has changed in 1.4.4, chloro extractinator now exists)	
+
+## PlayerDrawLayers.cs:
+- Re-ensure that all upper bound ID checks are gone, some patches had to be removed.
+
+## Tile(.TML).cs:
+- Add all the properties "referenced" in the vanilla file - new liquid, invisibility, other stuff.
+	
+## tModPorter:
+- MessageID.SendNPCBuffs -> NPCBuffs
+- MessageID.Unlock -> LockAndUnlock
+- MessageID.StartPlaying -> InitialSpawn
+- MessageID.SpawnBoss -> SpawnBossUseLicenseStartEvent
+- MessageID.Teleport -> TeleportEntity
