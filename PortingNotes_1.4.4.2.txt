@@ -10,6 +10,9 @@ ItemID.cs
 
 PlayerDrawLayers.cs:
 	- Re-ensure that all upper bound ID checks are gone, some patches had to be removed.
+
+Tile(.TML).cs:
+	- Add all the properties "referenced" in the vanilla file - new liquid, invisibility, other stuff.
 	
 Check pylon hooks for player.InInteractionRange/IsTileTypeInInteractionRange and new TileReachCheckSettings.Pylons param
 
