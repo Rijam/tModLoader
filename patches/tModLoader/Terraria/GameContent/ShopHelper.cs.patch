@@ -91,7 +91,7 @@
  		if (_currentNPCBeingTalkedTo.type == 633 && _currentNPCBeingTalkedTo.altTexture == 2)
  			text += "Transformed";
  
-@@ -179,6 +_,35 @@
+@@ -179,6 +_,63 @@
  		_currentHappiness = _currentHappiness + textValueWith + " ";
  	}
  
@@ -102,9 +102,37 @@
 +			return;
 +		}
 +
-+		AddHappinessReportText($"{affectionLevel}NPC", new {
-+			NPCName = NPC.GetFullnameByID(npcType)
-+		});
++		string otherNPCName = NPCID.Search.GetName(npcType); // Get the name of the other Town NPC.
++
++		// If the current Town NPC is a ModNPC
++		if (_currentNPCBeingTalkedTo.ModNPC is ModNPC modNPC) {
++
++			// Check to see if there is a localization entry for the other Town NPC defined in our current Town NPC.
++			if (Language.Exists($"{modNPC.GetLocalizationKey("TownNPCMood")}.{affectionLevel}NPC_{otherNPCName}")) {
++				// If it does exist, add the happiness report.
++				AddHappinessReportText($"{affectionLevel}NPC_{otherNPCName}", new {
++					NPCName = NPC.GetFullnameByID(npcType)
++				});
++			}
++			else {
++				// Otherwise, add the generic affection quote.
++				AddHappinessReportText($"{affectionLevel}NPC", new {
++					NPCName = NPC.GetFullnameByID(npcType)
++				});
++			}
++		}
++		else { // Vanilla NPC
++			if (Language.Exists($"TownNPCMood_{NPCID.Search.GetName(_currentNPCBeingTalkedTo.netID)}.{affectionLevel}NPC_{otherNPCName}")) {
++				AddHappinessReportText($"{affectionLevel}NPC_{otherNPCName}", new {
++					NPCName = NPC.GetFullnameByID(npcType)
++				});
++			}
++			else {
++				AddHappinessReportText($"{affectionLevel}NPC", new {
++					NPCName = NPC.GetFullnameByID(npcType)
++				});
++			}
++		}
 +
 +		_currentPriceAdjustment *= NPCHappiness.AffectionLevelToPriceMultiplier[affectionLevel];
 +	}

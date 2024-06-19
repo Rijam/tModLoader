@@ -83,6 +83,7 @@ namespace ExampleMod.Content.NPCs
 				.SetNPCAffection(NPCID.Dryad, AffectionLevel.Love) // Loves living near the dryad.
 				.SetNPCAffection(NPCID.Guide, AffectionLevel.Like) // Likes living near the guide.
 				.SetNPCAffection(NPCID.Merchant, AffectionLevel.Dislike) // Dislikes living near the merchant.
+				.SetNPCAffection(NPCID.Golfer, AffectionLevel.Dislike) // Dislikes living near the golfer.
 				.SetNPCAffection(NPCID.Demolitionist, AffectionLevel.Hate) // Hates living near the demolitionist.
 			; // < Mind the semicolon!
 

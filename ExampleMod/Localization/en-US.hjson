@@ -49,10 +49,12 @@ Mods: {
 					HateBiome: It's kind of hard to mod while being attacked by monsters in {BiomeName}.
 					LoveNPC: Do you think {NPCName} notices me?
 					LikeNPC: I can respect {NPCName} as a fellow guide and educator!
-					DislikeNPC: '''"{NPCName} keeps rambling on about "paid mods"... Wish I could convince him how terrible of an idea that is."'''
+					DislikeNPC: "{NPCName} is not very helpful."
 					HateNPC: I hate all the loud noises caused by {NPCName} and his explosives! I just want peace and quiet.
 					LikeNPC_Princess: "{NPCName} is a princess? That is so cool!"
 					Princess_LovesNPC: "{NPCName} is so square. I love that about them!"
+					LoveNPC_TownNPCGuide/TutorialTownNPC: Cross mod love for {NPCName}
+					DislikeNPC_Merchant: '''"{NPCName} keeps rambling on about "paid mods"... Wish I could convince him how terrible of an idea that is."'''
 				}
 
 				# This key is generated and used when the "Census" mod is enabled: It allows the user to see the spawn condition of this town NPC in the Housing UI
@@ -1225,7 +1227,10 @@ Mods: {
 
 		NotPresentDuringWorldGenMessage: ExampleMod was not used to generate this world, your experience with the content of ExampleMod will be degraded
 	}
+
+	TownNPCGuide.NPCs.TutorialTownNPC.TownNPCMood.LoveNPC_ExampleMod/ExamplePerson: "{NPCName}? I love them!"
 }
 
 # Mods can also override existing translation keys, but these types of changes are better suited to Resource Packs.
 UI.PlayerIsNotCreativeAndWorldIsCreative: Only Journey characters may enter a Journey world, silly.
+TownNPCMood_Guide.LoveNPC_ExampleMod/ExamplePerson: Wow I love {NPCName}!
