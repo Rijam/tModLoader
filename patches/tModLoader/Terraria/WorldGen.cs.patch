@@ -2437,10 +2437,12 @@
  		if (Main.getGoodWorld && genRand.Next(17) == 0) {
  			Projectile.NewProjectile(GetProjectileSource_ShakeTree(x, y), x * 16, y * 16, (float)Main.rand.Next(-100, 101) * 0.002f, 0f, 28, 0, 0f, Main.myPlayer, 16f, 16f);
  		}
-@@ -45310,11 +_,18 @@
+@@ -45310,11 +_,20 @@
  			Item.NewItem(Type: (genRand.Next(2) != 0) ? 5278 : 5277, source: GetItemSource_FromTreeShake(x, y), X: x * 16, Y: y * 16, Width: 16, Height: 16);
  		}
  
++		TileLoader.GlobalShakeTree(x, y, treeType);
++
 +		if (!createLeaves)
 +			return;
 +

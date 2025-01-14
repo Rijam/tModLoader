@@ -14,6 +14,7 @@ using Terraria.ModLoader.Core;
 using Terraria.ModLoader.IO;
 using Terraria.ObjectData;
 using static Terraria.GameContent.ItemDropRules.Conditions;
+using static Terraria.ModLoader.BackupIO;
 
 namespace Terraria.ModLoader;
 
@@ -96,6 +97,7 @@ public static class TileLoader
 	private static DelegateChangeWaterfallStyle[] HookChangeWaterfallStyle;
 	private static Action<int, int, int, Item>[] HookPlaceInWorld;
 	private static Action[] HookPostSetupTileMerge;
+	private static Action<int, int, TreeTypes>[] HookShakeTree;
 
 	internal static int ReserveTileID()
 	{
@@ -242,6 +244,7 @@ public static class TileLoader
 		ModLoader.BuildGlobalHook<GlobalTile, DelegateChangeWaterfallStyle>(ref HookChangeWaterfallStyle, globalTiles, g => g.ChangeWaterfallStyle);
 		ModLoader.BuildGlobalHook(ref HookPlaceInWorld, globalTiles, g => g.PlaceInWorld);
 		ModLoader.BuildGlobalHook(ref HookPostSetupTileMerge, globalTiles, g => g.PostSetupTileMerge);
+		ModLoader.BuildGlobalHook(ref HookShakeTree, globalTiles, g => g.ShakeTree);
 
 		if (!unloading) {
 			loaded = true;
@@ -1238,6 +1241,13 @@ public static class TileLoader
 					tileTypeAndTileStyleToItemType.TryAdd((item.createTile, item.placeStyle), item.type);
 				}
 			}
+		}
+	}
+
+	public static void GlobalShakeTree(int x, int y, TreeTypes treeType)
+	{
+		foreach (var hook in HookShakeTree) {
+			hook(x, y, treeType);
 		}
 	}
 }

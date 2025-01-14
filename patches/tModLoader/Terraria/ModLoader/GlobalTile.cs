@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Enums;
 
 namespace Terraria.ModLoader;
 
@@ -315,5 +316,16 @@ public abstract class GlobalTile : GlobalBlockType
 	/// </summary>
 	public virtual void PostSetupTileMerge()
 	{
+	}
+
+	/// <summary>
+	/// Runs when any tree when it is shook. This allows you to add drops when you shake trees.
+	/// </summary>
+	/// <param name="x">The x coordinate of the tree.</param>
+	/// <param name="y">The y coordinate of the tree.</param>
+	/// <param name="treeType">The type of tree that it is.</param>
+	public virtual void ShakeTree(int x, int y, TreeTypes treeType)
+	{
+
 	}
 }
