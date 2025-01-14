@@ -14,7 +14,6 @@ using Terraria.ModLoader.Core;
 using Terraria.ModLoader.IO;
 using Terraria.ObjectData;
 using static Terraria.GameContent.ItemDropRules.Conditions;
-using static Terraria.ModLoader.BackupIO;
 
 namespace Terraria.ModLoader;
 

@@ -37,7 +37,7 @@ namespace ExampleMod.Common.GlobalTiles
 
 			// In this example, there is 20% chance for any tree to shoot a hostile arrow downwards on No Traps and Get Fixed Boi worlds.
 			if (WorldGen.genRand.NextBool(5) && Main.noTrapsWorld) {
-				Projectile.NewProjectile(new EntitySource_ShakeTree(x, y), x * 16, y * 16, (float)Main.rand.Next(-100, 101) * 0.002f, 8f, ProjectileID.WoodenArrowHostile, Damage: 10, KnockBack: 0f, Owner: Main.myPlayer);
+				Projectile.NewProjectile(new EntitySource_ShakeTree(x, y), x * 16, y * 16, Main.rand.Next(-100, 101) * 0.002f, 8f, ProjectileID.WoodenArrowHostile, Damage: 10, KnockBack: 0f, Owner: Main.myPlayer);
 			}
 
 			// ModTree will always count a Forest tree.
