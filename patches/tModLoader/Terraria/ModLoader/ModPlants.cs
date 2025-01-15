@@ -180,7 +180,7 @@ public abstract class ModTree : ITree
 	/// <summary>
 	/// Used mostly for vanilla tree shake loot tables
 	/// </summary>
-	public virtual TreeTypes CountsAsTreeType => TreeTypes.Forest;
+	public virtual TreeTypes CountsAsTreeType => TreeTypes.ModTree;
 
 	/// <summary>
 	/// Return the type of dust created when this tree is destroyed. Returns 7 by default.
@@ -276,7 +276,7 @@ public abstract class ModPalmTree : ITree
 	/// <summary>
 	/// Used mostly for vanilla tree shake loot tables
 	/// </summary>
-	public virtual TreeTypes CountsAsTreeType => TreeTypes.Palm;
+	public virtual TreeTypes CountsAsTreeType => TreeTypes.ModPalmTree;
 
 	/// <summary>
 	/// Return the type of dust created when this palm tree is destroyed. Returns 215 by default.
