@@ -6,6 +6,7 @@ using Terraria.DataStructures;
 using ExampleMod.Content.Items;
 using ExampleMod.Content.Projectiles;
 using ExampleMod.Content.NPCs;
+using ExampleMod.Content.Tiles;
 
 namespace ExampleMod.Common.GlobalTiles
 {
@@ -41,11 +42,21 @@ namespace ExampleMod.Common.GlobalTiles
 				Projectile.NewProjectile(new EntitySource_ShakeTree(x, y), x * 16, y * 16, Main.rand.Next(-100, 101) * 0.002f, 8f, ProjectileID.WoodenArrowHostile, Damage: 10, KnockBack: 0f, Owner: Main.myPlayer);
 			}
 
-			// Modded trees will be tree type ModTree or ModPalmTree.
-			// In this example, there is a 50% chance for ANY modded tree or modded palm tree to drop a Party Zombie at night.
-			if ((treeType == TreeTypes.ModTree || treeType == TreeTypes.ModPalmTree) && WorldGen.genRand.NextBool(2) && !Main.dayTime) {
+			// Modded trees will be tree type Custom by default.
+			// In this example, there is a 50% chance for a modded tree to drop a Party Zombie at night.
+			if (treeType == TreeTypes.Custom && WorldGen.genRand.NextBool(2) && !Main.dayTime) {
 				NPC.NewNPC(WorldGen.GetNPCSource_ShakeTree(x, y), x * 16, y * 16, ModContent.NPCType<PartyZombie>());
 			}
+
+			// In this example, we want to target Example Trees specifically. We don't want other modded trees such as Example Palm Tree.
+			if (treeType == TreeTypes.Custom) {
+				WorldGen.GetTreeBottom(x, y, out int newX, out int newY); // Finds the block that the tree is planted on.
+				// If the block the tree is planted on is an Example Block, we know we have found an Example Tree.
+				if (Main.tile[newX, newY].TileType == ModContent.TileType<ExampleBlock>() && WorldGen.genRand.NextBool(2)) {
+					Item.NewItem(WorldGen.GetItemSource_FromTreeShake(x, y), x * 16, y * 16, 16, 16, ItemID.Coconut);
+				}
+			}
+
 			// To make things happen when your modded tree is shook, override ModTree.Shake() instead. See ExampleTree.
 		}
 	}

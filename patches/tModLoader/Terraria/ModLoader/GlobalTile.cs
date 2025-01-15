@@ -319,11 +319,12 @@ public abstract class GlobalTile : GlobalBlockType
 	}
 
 	/// <summary>
-	/// This hook runs when any tree is shook. This allows you to add drops when you shake trees.
+	/// <br>This hook runs when any tree is shook. This allows you to add drops when you shake trees.</br>
+	/// <br><see cref="TreeTypes.None"/> will not allow the tree to be shaken.</br>
 	/// </summary>
 	/// <param name="x">The x tile coordinate of the tree.</param>
 	/// <param name="y">The y tile coordinate of the top of the tree.</param>
-	/// <param name="treeType">The type of tree that is being shaken. Modded trees will be <see cref="TreeTypes.ModTree"/> or <see cref="TreeTypes.ModPalmTree"/></param>
+	/// <param name="treeType">The type of tree that is being shaken. Modded trees will be <see cref="TreeTypes.Custom"/> by default.</param>
 	public virtual void ShakeTree(int x, int y, TreeTypes treeType)
 	{
 
