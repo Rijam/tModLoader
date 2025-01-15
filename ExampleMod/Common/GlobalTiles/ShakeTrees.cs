@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.Enums;
 using Terraria.ModLoader;
@@ -7,7 +6,6 @@ using Terraria.DataStructures;
 using ExampleMod.Content.Items;
 using ExampleMod.Content.Projectiles;
 using ExampleMod.Content.NPCs;
-using Terraria.Localization;
 
 namespace ExampleMod.Common.GlobalTiles
 {
@@ -43,10 +41,10 @@ namespace ExampleMod.Common.GlobalTiles
 				Projectile.NewProjectile(new EntitySource_ShakeTree(x, y), x * 16, y * 16, Main.rand.Next(-100, 101) * 0.002f, 8f, ProjectileID.WoodenArrowHostile, Damage: 10, KnockBack: 0f, Owner: Main.myPlayer);
 			}
 
-			// Modded trees will be type ModTree or ModPalmTree.
+			// Modded trees will be tree type ModTree or ModPalmTree.
 			// In this example, there is a 50% chance for ANY modded tree or modded palm tree to drop a Party Zombie at night.
 			if ((treeType == TreeTypes.ModTree || treeType == TreeTypes.ModPalmTree) && WorldGen.genRand.NextBool(2) && !Main.dayTime) {
-				NPC.NewNPCDirect(WorldGen.GetNPCSource_ShakeTree(x, y), x * 16, y * 16, ModContent.NPCType<PartyZombie>());
+				NPC.NewNPC(WorldGen.GetNPCSource_ShakeTree(x, y), x * 16, y * 16, ModContent.NPCType<PartyZombie>());
 			}
 			// To make things happen when your modded tree is shook, override ModTree.Shake() instead. See ExampleTree.
 		}
