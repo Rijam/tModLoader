@@ -319,8 +319,7 @@ public abstract class GlobalTile : GlobalBlockType
 	}
 
 	/// <summary>
-	/// <br>This hook runs when any tree is shook. This allows you to add drops when you shake trees.</br>
-	/// <br><see cref="TreeTypes.None"/> will not allow the tree to be shaken.</br>
+	/// This hook runs when any tree is shaken. This allows you to add drops when you shake trees.
 	/// </summary>
 	/// <param name="x">The x tile coordinate of the tree.</param>
 	/// <param name="y">The y tile coordinate of the top of the tree.</param>
