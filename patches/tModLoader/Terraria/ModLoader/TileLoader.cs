@@ -96,7 +96,8 @@ public static class TileLoader
 	private static DelegateChangeWaterfallStyle[] HookChangeWaterfallStyle;
 	private static Action<int, int, int, Item>[] HookPlaceInWorld;
 	private static Action[] HookPostSetupTileMerge;
-	private static Action<int, int, TreeTypes>[] HookShakeTree;
+	private static Action<int, int, TreeTypes>[] HookPreShakeTree;
+	private static Func<int, int, TreeTypes, bool>[] HookShakeTree;
 
 	internal static int ReserveTileID()
 	{
@@ -243,6 +244,7 @@ public static class TileLoader
 		ModLoader.BuildGlobalHook<GlobalTile, DelegateChangeWaterfallStyle>(ref HookChangeWaterfallStyle, globalTiles, g => g.ChangeWaterfallStyle);
 		ModLoader.BuildGlobalHook(ref HookPlaceInWorld, globalTiles, g => g.PlaceInWorld);
 		ModLoader.BuildGlobalHook(ref HookPostSetupTileMerge, globalTiles, g => g.PostSetupTileMerge);
+		ModLoader.BuildGlobalHook(ref HookPreShakeTree, globalTiles, g => g.PreShakeTree);
 		ModLoader.BuildGlobalHook(ref HookShakeTree, globalTiles, g => g.ShakeTree);
 
 		if (!unloading) {
@@ -1243,10 +1245,16 @@ public static class TileLoader
 		}
 	}
 
-	public static void GlobalShakeTree(int x, int y, TreeTypes treeType)
+	public static bool GlobalShakeTree(int x, int y, TreeTypes treeType)
 	{
-		foreach (var hook in HookShakeTree) {
+		foreach (var hook in HookPreShakeTree) {
 			hook(x, y, treeType);
 		}
+
+		foreach (var hook in HookShakeTree) {
+			if (hook(x, y, treeType))
+				return true;
+		}
+		return false;
 	}
 }
