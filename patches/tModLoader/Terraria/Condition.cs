@@ -83,7 +83,12 @@ public sealed record Condition(LocalizedText Description, Func<bool> Predicate)
 	public static readonly Condition TenthAnniversaryWorld =	new("Conditions.WorldAnniversary",			() => Main.tenthAnniversaryWorld);
 	public static readonly Condition DontStarveWorld =			new("Conditions.WorldDontStarve",			() => Main.dontStarveWorld);
 	public static readonly Condition NoTrapsWorld =				new("Conditions.WorldNoTraps",				() => Main.noTrapsWorld);
-	public static readonly Condition ZenithWorld =				new("Conditions.WorldZenith",				() => Main.remixWorld && Main.getGoodWorld);
+	public static readonly Condition ZenithWorld =				new("Conditions.WorldZenith",				() => Main.zenithWorld);
+	public static readonly Condition SkyblockWorld =			new("Conditions.WorldSkyblock",				() => Main.skyblockWorld);
+	public static readonly Condition VampireSeed =				new("Conditions.SeedVampire",				() => Main.vampireSeed);
+	public static readonly Condition InfectedSeed =				new("Conditions.SeedInfected",				() => Main.infectedSeed);
+	public static readonly Condition TeamBasedSpawnsSeed =		new("Conditions.SeedTeamBasedSpawns",		() => Main.teamBasedSpawnsSeed);
+	public static readonly Condition DualDungeonsSeed =			new("Conditions.SeedDualDungeons",			() => Main.dualDungeonsSeed);
 	
 	public static readonly Condition NotDrunkWorld =			new("Conditions.WorldNotDrunk",				() => !Main.drunkWorld);
 	public static readonly Condition NotRemixWorld =			new("Conditions.WorldNotRemix",				() => !Main.remixWorld);
@@ -92,7 +97,12 @@ public sealed record Condition(LocalizedText Description, Func<bool> Predicate)
 	public static readonly Condition NotTenthAnniversaryWorld =	new("Conditions.WorldNotAnniversary",		() => !Main.tenthAnniversaryWorld);
 	public static readonly Condition NotDontStarveWorld =		new("Conditions.WorldNotDontStarve",		() => !Main.dontStarveWorld);
 	public static readonly Condition NotNoTrapsWorld =			new("Conditions.WorldNotNoTraps",			() => !Main.noTrapsWorld);
-	public static readonly Condition NotZenithWorld =			new("Conditions.WorldNotZenith",			() => !ZenithWorld.IsMet());
+	public static readonly Condition NotZenithWorld =			new("Conditions.WorldNotZenith",			() => !Main.zenithWorld);
+	public static readonly Condition NotSkyblockWorld =			new("Conditions.WorldNotSkyblock",			() => !Main.skyblockWorld);
+	public static readonly Condition NotVampireSeed =			new("Conditions.SeedNotVampire",			() => !Main.vampireSeed);
+	public static readonly Condition NotInfectedSeed =			new("Conditions.SeedNotInfected",			() => !Main.infectedSeed);
+	public static readonly Condition NotTeamBasedSpawnsSeed =	new("Conditions.SeedNotTeamBasedSpawns",	() => !Main.teamBasedSpawnsSeed);
+	public static readonly Condition NotDualDungeonsSeed =		new("Conditions.SeedNotDualDungeons",		() => !Main.dualDungeonsSeed);
 	// Events
 	public static readonly Condition Christmas =				new("Conditions.Christmas",					() => Main.xMas);
 	public static readonly Condition Halloween =				new("Conditions.Halloween",					() => Main.halloween);
@@ -195,6 +205,9 @@ public sealed record Condition(LocalizedText Description, Func<bool> Predicate)
 	public static readonly Condition HappyEnoughToSellPylons =	new("Conditions.HappyEnoughForPylons",		() => Main.remixWorld || HappyEnough.IsMet());
 	public static readonly Condition AnotherTownNPCNearby =		new("Conditions.AnotherTownNPCNearby",		() => TeleportPylonsSystem.DoesPositionHaveEnoughNPCs(2, Main.LocalPlayer.Center.ToTileCoordinates16()));
 	public static readonly Condition IsNpcShimmered =			new("Conditions.IsNpcShimmered",			() => Main.LocalPlayer.TalkNPC?.IsShimmerVariant ?? false);
+	public static readonly Condition NotIsNpcShimmered =		new("Conditions.NotIsNpcShimmered",			() => !IsNpcShimmered.IsMet());
+	public static readonly Condition IsNpcHomeless =			new("Conditions.IsNpcHomeless",				() => Main.LocalPlayer.TalkNPC.homeless);
+	public static readonly Condition NotIsNpcHomeless =			new("Conditions.NotIsNpcHomeless",			() => !Main.LocalPlayer.TalkNPC.homeless);
 
 	// Moon phases :( thanks to Chicken Bones for help with those
 	public static readonly Condition MoonPhaseFull =			new("Conditions.FullMoon",					() => Main.GetMoonPhase() == MoonPhase.Full);
@@ -223,6 +236,7 @@ public sealed record Condition(LocalizedText Description, Func<bool> Predicate)
 
 	// Parameters
 	public static Condition PlayerCarriesItem(int itemId) => new(Language.GetText("Conditions.PlayerCarriesItem").WithFormatArgs(Lang.GetItemName(itemId)), () => Main.LocalPlayer.HasItem(itemId));
+	public static Condition PlayerCarriesItemOrItem(int itemId1, int itemId2) => new(Language.GetText("Conditions.PlayerCarriesItem2").WithFormatArgs(Lang.GetItemName(itemId1), Lang.GetItemName(itemId2)), () => Main.LocalPlayer.HasItem(itemId1) || Main.LocalPlayer.HasItem(itemId2));
 	public static Condition GolfScoreOver(int score) => new(Language.GetText("Conditions.GolfScoreOver").WithFormatArgs(score), () => Main.LocalPlayer.golferScoreAccumulated >= score);
 	public static Condition NpcIsPresent(int npcId) => new(Language.GetText("Conditions.NpcIsPresent").WithFormatArgs(Lang.GetNPCName(npcId)), () => NPC.AnyNPCs(npcId));
 	public static Condition AnglerQuestsFinishedOver(int quests) => new(Language.GetText("Conditions.AnglerQuestsFinishedOver").WithFormatArgs(quests), () => Main.LocalPlayer.anglerQuestsFinished >= quests);
@@ -232,5 +246,6 @@ public sealed record Condition(LocalizedText Description, Func<bool> Predicate)
 
 		return new(Language.GetText("Conditions.BestiaryPercentage").WithFormatArgs(percent), () => Main.GetBestiaryProgressReport().CompletionPercent >= percent / 100f);
 	}
+	public static Condition PlayerMaxLifeAtLeast(int permanentMaxLife) => new(Language.GetText("Conditions.AtleastXHealth").WithFormatArgs(permanentMaxLife), () => Main.LocalPlayer.statLifeMax >= permanentMaxLife);
+	public static Condition PlayerMaxManaAtLeast(int permanentMaxMana) => new(Language.GetText("Conditions.AtleastXMana").WithFormatArgs(permanentMaxMana), () => Main.LocalPlayer.statManaMax >= permanentMaxMana);
 }
-			

@@ -627,8 +627,9 @@ public static partial class NPCShopDatabase
 
 	private static void RegisterCyborg()
 	{
-		var portalGunStation = new Condition(Language.GetText("Conditions.PlayerCarriesItem2").WithFormatArgs(Lang.GetItemName(ItemID.PortalGun), Lang.GetItemName(ItemID.PortalGunStation)),
-			() => Main.LocalPlayer.HasItem(ItemID.PortalGun) || Main.LocalPlayer.HasItem(ItemID.PortalGunStation));
+		// var portalGunStation = new Condition(Language.GetText("Conditions.PlayerCarriesItem2").WithFormatArgs(Lang.GetItemName(ItemID.PortalGun), Lang.GetItemName(ItemID.PortalGunStation)),
+		// 	() => Main.LocalPlayer.HasItem(ItemID.PortalGun) || Main.LocalPlayer.HasItem(ItemID.PortalGunStation));
+		var portalGunStation = Condition.PlayerCarriesItemOrItem(ItemID.PortalGun, ItemID.PortalGunStation);
 
 		new NPCShop(NPCID.Cyborg)
 			.Add(ItemID.RocketI)

@@ -73,7 +73,8 @@ partial class ProjectileID
 			ClusterRocketII, ClusterMineII, ClusterFragmentsII, WetRocket, WetGrenade, WetMine, LavaRocket, LavaGrenade, LavaMine, HoneyRocket, HoneyGrenade, HoneyMine,
 			MiniNukeRocketI, MiniNukeGrenadeI, MiniNukeMineI, MiniNukeRocketII, MiniNukeGrenadeII, MiniNukeMineII, DryRocket, DryGrenade, DryMine, ClusterSnowmanRocketI,
 			ClusterSnowmanRocketII, WetSnowmanRocket, LavaSnowmanRocket, HoneySnowmanRocket, MiniNukeSnowmanRocketI, MiniNukeSnowmanRocketII, DrySnowmanRocket,
-			ClusterSnowmanFragmentsI, ClusterSnowmanFragmentsII, WetBomb, LavaBomb, HoneyBomb, DryBomb, DirtBomb, DirtStickyBomb, SantankMountRocket, TNTBarrel);
+			ClusterSnowmanFragmentsI, ClusterSnowmanFragmentsII, WetBomb, LavaBomb, HoneyBomb, DryBomb, DirtBomb, DirtStickyBomb, SantankMountRocket, TNTBarrel,
+			FreezeBomb, SuperBomb, SuperStickyBomb, AcornSlingshotAcorn);
 
 		/// <summary>
 		/// This projectile is a candidate for player interaction. The projectile will be able to be targeted with smart cursor. Projectile that can be right clicked should set this to true.

@@ -37,7 +37,9 @@ namespace ExampleMod.Content.Projectiles
 			Projectile.penetrate = -1; // Infinite penetration. The projectile can hit an infinite number of enemies.
 			Projectile.tileCollide = false; // Don't kill the projectile if it hits a tile.
 			Projectile.scale = 1f; // The scale of the projectile. This only effects the drawing and the width of the collision.
-			Projectile.hide = true; // We are drawing the projectile ourselves. See PreDraw() below.
+			// Removed? Projectile.hide = true; // We are drawing the projectile ourselves. See PreDraw() below.
+			Projectile.drawLayer = 7;
+			Projectile.usesOwnerLight = true;
 			Projectile.ownerHitCheck = true; // Make sure the owner of the projectile has line of sight to the target (aka can't hit things through tile).
 			Projectile.DamageType = DamageClass.MeleeNoSpeed; // Set the damage to melee damage.
 
@@ -50,6 +52,7 @@ namespace ExampleMod.Content.Projectiles
 			Player owner = Main.player[Projectile.owner]; // Get the owner of the projectile.
 			Projectile.direction = owner.direction; // Direction will be -1 when facing left and +1 when facing right. 
 			owner.heldProj = Projectile.whoAmI; // Set the owner's held projectile to this projectile. heldProj is used so that the projectile will be killed when the player drops or swap items.
+			owner.MatchItemTimeToItemAnimation(); // Sets itemTime = itemAnimation
 
 			int itemAnimationMax = owner.itemAnimationMax;
 			// Remember, frames count down from itemAnimationMax to 0
@@ -67,6 +70,7 @@ namespace ExampleMod.Content.Projectiles
 			}
 
 			int itemAnimation = owner.itemAnimation;
+			Projectile.spriteDirection = -Projectile.direction; // new, test if necessary or change predraw
 			// extension and retraction factors (0-1). As the animation plays out, extension goes from 0-1 and stays at 1 while holding, then retraction goes from 0-1.
 			float extension = 1 - Math.Max(itemAnimation - holdOutFrame, 0) / (float)(itemAnimationMax - holdOutFrame);
 			float retraction = 1 - Math.Min(itemAnimation, holdOutFrame) / (float)holdOutFrame;
@@ -80,9 +84,32 @@ namespace ExampleMod.Content.Projectiles
 			Projectile.Center = center; // Set the center of the projectile to the center of the owner. Projectile.Center is now actually the tip of the Jousting Lance.
 			Projectile.position += Projectile.velocity * tipDist; // The projectile velocity contains the orientation of the lance, multiply it by the tipDist to position the tip.
 
+			// Projectile.position += Projectile.velocity * Projectile.AI_019_Spears_GetSpearOffsetRelativeToPlayer(owner, itemAnimation, itemAnimationMax);
+
+			int num = itemAnimationMax;
+			int num2 = itemAnimation;
+			int num3 = itemAnimationMax / 3;
+			// float num4 = MathHelper.Min(num2, num3);
+			float num4 = MathHelper.Min(itemAnimation, itemAnimation * 0.34f);
+			float num5 = (float)num2 - num4;
+			float num6 = 28f;
+			float num8 = 0.4f;
+			float num7 = 0.4f;
+			// float num9 = (float)(num - num3) - num5;
+			float num9 = (itemAnimationMax * 0.67f) - (itemAnimation - num4);
+			// float num10 = (float)num3 - num4;
+			float num10 = (itemAnimationMax * 0.34f) - num4;
+			float offsetRelativeToPlayer = num6 + num7 * num9 - num8 * num10;
+			Projectile.position += Projectile.velocity * offsetRelativeToPlayer;
+
 			// Set the rotation of the projectile.
 			// For reference, 0 is the top left, 180 degrees or pi radians is the bottom right.
 			Projectile.rotation = (float)Math.Atan2(Projectile.velocity.Y, Projectile.velocity.X) + (float)Math.PI * 3 / 4f;
+			if (Projectile.spriteDirection == -1) { // new
+				Projectile.rotation -= (float)Math.PI / 2f;
+			}
+
+			// Projectile.AI_019_Spears_GetExtensionHitbox(owner, out var _);
 
 			// Fade the projectile in when it first spawns
 			Projectile.alpha -= 40;
@@ -141,7 +168,8 @@ namespace ExampleMod.Content.Projectiles
 
 		// This is the custom collision that Jousting Lances uses. 
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox) {
-			float rotationFactor = Projectile.rotation + (float)Math.PI / 4f; // The rotation of the Jousting Lance.
+			//float rotationFactor = Projectile.rotation + (float)Math.PI / 4f; // The rotation of the Jousting Lance.
+			float rotationFactor = Projectile.rotation - (float)Math.PI / 4f - (float)Math.PI / 2f - ((Projectile.spriteDirection == 1) ? ((float)Math.PI) : ((float)Math.PI / 2f));
 			float scaleFactor = 95f; // How far back the hit-line will be from the tip of the Jousting Lance. You will need to modify this if you have a longer or shorter Jousting Lance. Vanilla uses 95f
 			float widthMultiplier = 23f; // How thick the hit-line is. Increase or decrease this value if your Jousting Lance is thicker or thinner. Vanilla uses 23f
 			float collisionPoint = 0f; // collisionPoint is needed for CheckAABBvLineCollision(), but it isn't used for our collision here. Keep it at 0f.
@@ -217,5 +245,7 @@ namespace ExampleMod.Content.Projectiles
 			// It's important to return false, otherwise we also draw the original texture.
 			return false;
 		}
+
+		// TODO: Display on mannequin.  AI_DisplayDoll
 	}
 }
