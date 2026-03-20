@@ -79,8 +79,8 @@ partial class ProjectileID
 		/// <summary>
 		/// This projectile is a candidate for player interaction. The projectile will be able to be targeted with smart cursor. Projectile that can be right clicked should set this to true.
 		/// <br/><br/> The <see href="https://github.com/tModLoader/tModLoader/tree/1.4.4/ExampleMod/Content/Projectiles/ExampleInteractableProjectile.cs">ExampleInteractableProjectile.cs</see> example demonstrates properly implementing an interactable projectile.
-		/// <br/><br/> Defaults to false. Vanilla entries include <see cref="FlyingPiggyBank"/>, <see cref="VoidLens"/>, and <see cref="ChesterPet"/>.
+		/// <br/><br/> Defaults to false. Vanilla entries include <see cref="FlyingPiggyBank"/>, <see cref="VoidLens"/>, <see cref="ChesterPet"/>, <see cref="PalworldMinionCattiva"/>, <see cref="PalworldMinionFoxsparks"/>, and <see cref="PalworldDigtoise"/>.
 		/// </summary>
-		public static bool[] IsInteractable = Factory.CreateBoolSet(false, 525, 734, 960);
+		public static bool[] IsInteractable = Factory.CreateBoolSet(false, 525, 734, 960, 1093, 1094, 1098);
 	}
 }

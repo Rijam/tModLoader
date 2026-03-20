@@ -66,6 +66,19 @@ namespace ExampleMod.Content.NPCs.TownPets
 			NPCID.Sets.NPCBestiaryDrawOffset.Add(Type, drawModifiers);
 
 			NPCProfile = new ExampleTownPetProfile(); // Assign our profile.
+
+			// Here we define which portrait to use for the Town NPC when the portrait style setting is set to detailed.
+			NPCID.Sets.NPCPortraits.Add(Type, NPCID.Sets.PrioritizedPortrait()
+				.With(NPCID.Sets.VariantPortraitCondition(0), NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExampleTownPet_0"))
+				.With(NPCID.Sets.VariantPortraitCondition(1), NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExampleTownPet_1"))
+				.With(NPCID.Sets.VariantPortraitCondition(2), NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExampleTownPet_2"))
+				.With(NPCID.Sets.VariantPortraitCondition(3), NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExampleTownPet_3"))
+				.With(NPCID.Sets.VariantPortraitCondition(4), NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExampleTownPet_4"))
+				.With(NPCID.Sets.VariantPortraitCondition(5), NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExampleTownPet_5"))
+				.With(NPCID.Sets.VariantPortraitCondition(6), NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExampleTownPet_6"))
+				.Default(NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExampleTownPet_0")));
+			NPCID.Sets.NPCPortraitsCloseUpOffsets.Add(Type, new Vector2(0f, 0f)); // Here we can change the offsets of Town NPC when the portrait style setting is set to profile.
+			NPCID.Sets.NPCPortraitsFullBodyRetroOffsets.Add(Type, new Vector2(0f, 0f)); // Here we can change the offsets of Town NPC when the portrait style setting is set to retro.
 		}
 
 		public override void SetDefaults() {

@@ -76,6 +76,11 @@ namespace ExampleMod.Content.NPCs
 				new Profiles.DefaultNPCProfile(Texture, -1),
 				new Profiles.DefaultNPCProfile(Texture + "_Shimmer", -1)
 			);
+
+			// Here we define which portrait to use for the Town NPC when the portrait style setting is set to detailed.
+			NPCID.Sets.NPCPortraits.Add(Type, NPCID.Sets.PrioritizedPortrait().With(NPCID.Sets.ShimmeredPortraitCondition, NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExampleBoneMerchant_Shimmer")).Default(NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExampleBoneMerchant")));
+			NPCID.Sets.NPCPortraitsCloseUpOffsets.Add(Type, new Vector2(0f, 0f)); // Here we can change the offsets of Town NPC when the portrait style setting is set to profile.
+			NPCID.Sets.NPCPortraitsFullBodyRetroOffsets.Add(Type, new Vector2(0f, 0f)); // Here we can change the offsets of Town NPC when the portrait style setting is set to retro.
 		}
 
 		public override void SetDefaults() {

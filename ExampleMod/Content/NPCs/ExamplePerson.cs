@@ -101,6 +101,11 @@ namespace ExampleMod.Content.NPCs
 
 			ContentSamples.NpcBestiaryRarityStars[Type] = 3; // We can override the default bestiary star count calculation by setting this.
 
+			// Here we define which portrait to use for the Town NPC when the portrait style setting is set to detailed.
+			NPCID.Sets.NPCPortraits.Add(Type, NPCID.Sets.PrioritizedPortrait().With(NPCID.Sets.ShimmeredPortraitCondition, NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExamplePerson_Shimmer")).Default(NPCID.Sets.BasicPortrait("ExampleMod/Content/NPCs/Portraits/ExamplePerson")));
+			NPCID.Sets.NPCPortraitsCloseUpOffsets.Add(Type, new Vector2(0f, 0f)); // Here we can change the offsets of Town NPC when the portrait style setting is set to profile.
+			NPCID.Sets.NPCPortraitsFullBodyRetroOffsets.Add(Type, new Vector2(0f, 0f)); // Here we can change the offsets of Town NPC when the portrait style setting is set to retro.
+
 			UpgradedText = this.GetLocalization("Upgraded");
 		}
 
