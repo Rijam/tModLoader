@@ -56,6 +56,7 @@ public class SimpleRenamedVanillaMembersTest
 		var expertKnockBack = Main.GameModeInfo.KnockbackToEnemiesMultiplier;
 		var knockBackMultiplier = Main.GameModeInfo.KnockbackToEnemiesMultiplier;
 		var damageMultiplier = Main.GameModeInfo.EnemyDamageMultiplier;
+		var DisableIntenseVisualEffects = !Main.FlashyEffectsWorld;
 
 		int copperTierOreInt = WorldGen.SavedOreTiers.Copper;
 #if COMPILE_ERROR // ushort -> int

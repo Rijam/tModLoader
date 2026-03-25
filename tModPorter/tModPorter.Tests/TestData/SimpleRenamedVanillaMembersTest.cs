@@ -48,6 +48,7 @@ public class SimpleRenamedVanillaMembersTest
 		var expertKnockBack = Main.expertKnockBack;
 		var knockBackMultiplier = Main.knockBackMultiplier;
 		var damageMultiplier = Main.damageMultiplier;
+		var DisableIntenseVisualEffects = Main.DisableIntenseVisualEffects;
 
 		int copperTierOreInt = WorldGen.CopperTierOre;
 		ushort copperTierOre = WorldGen.CopperTierOre;
