@@ -4556,6 +4556,66 @@
  			}
  			else {
  				int num2 = rand.Next(3);
+@@ -34758,13 +_,30 @@
+ 		if (dialoguePortraitPreference == DialoguePortraitDrawOption.Disabled)
+ 			return;
+ 
++		if (LocalPlayer.sign != -1) // TML: return if editing a sign. Main.editSign didn't work
++			return;
++
+ 		NPCID.Sets.NPCPortraitProvider nPCPortraitProvider = npcChatPortrait;
+-		if (nPCPortraitProvider == null)
+-			return;
+-
+-		nPCPortraitProvider.GetDrawData(out var texture, out var drawFrame);
+-		if (texture == null)
+-			return;
++		bool skipDetailedPortrait = false; // TML: Allow the profile and retro portrait settings to still show up even if no detailed portrait is provided.
++		Texture2D texture = null;
++		Rectangle drawFrame = Rectangle.Empty;
++		if (nPCPortraitProvider != null) {
++			// return; TML: Don't return early so that the profile and retro portrait settings still draw.
++
++			nPCPortraitProvider.GetDrawData(out var portraitTexture, out var portraitDrawFrame);
++			if (portraitTexture != null) {
++				// return;
++				texture = portraitTexture;
++				drawFrame = portraitDrawFrame;
++			}
++			else {
++				skipDetailedPortrait = dialoguePortraitPreference == DialoguePortraitDrawOption.Detailed;
++			}
++		}
++		else {
++			skipDetailedPortrait = dialoguePortraitPreference == DialoguePortraitDrawOption.Detailed;
++		}
++
+ 
+ 		int num = npcChatPortraitFrameCounter++;
+ 		int num2 = 56;
+@@ -34805,9 +_,10 @@
+ 			}
+ 		}
+ 
++		if (!skipDetailedPortrait && dialoguePortraitPreference != DialoguePortraitDrawOption.Detailed) // TML: Don't draw the background if there is no detailed portrait provided.
+-		spriteBatch.Draw(npcPortraitBackground.Value, vector, rectangle, chatBack, num5, rectangle.Size() / 2f, scale, spriteEffects, 0f);
++			spriteBatch.Draw(npcPortraitBackground.Value, vector, rectangle, chatBack, num5, rectangle.Size() / 2f, scale, spriteEffects, 0f);
+ 		NPC nPC = npc[LocalPlayer.talkNPC];
+-		if (dialoguePortraitPreference == DialoguePortraitDrawOption.Detailed)
++		if (dialoguePortraitPreference == DialoguePortraitDrawOption.Detailed && !skipDetailedPortrait)
+ 			spriteBatch.Draw(texture, vector, drawFrame, Microsoft.Xna.Framework.Color.White, num5, drawFrame.Size() / 2f, scale, spriteEffects, 0f);
+ 
+ 		if (dialoguePortraitPreference == DialoguePortraitDrawOption.CloseUp) {
+@@ -34878,6 +_,9 @@
+ 			spriteBatch.Begin(SpriteSortMode.Deferred, null, null, null, null, null, UIScaleMatrix);
+ 		}
+ 
++		if (skipDetailedPortrait) // TML: Don't draw the name of the NPC if there is no detailed portrait provided.
++			return;
++
+ 		string givenName = nPC.GivenName;
+ 		DynamicSpriteFont value3 = FontAssets.ItemStack.Value;
+ 		Vector2 vector2 = value3.MeasureString(givenName);
 @@ -34899,8 +_,9 @@
  		playerInventory = true;
  		stackSplit = 9999;
