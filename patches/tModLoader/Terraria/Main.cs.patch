@@ -4597,7 +4597,7 @@
  			}
  		}
  
-+		if (!skipDetailedPortrait && dialoguePortraitPreference != DialoguePortraitDrawOption.Detailed) // TML: Don't draw the background if there is no detailed portrait provided.
++		if (!skipDetailedPortrait) // TML: Don't draw the background if there is no detailed portrait provided.
 -		spriteBatch.Draw(npcPortraitBackground.Value, vector, rectangle, chatBack, num5, rectangle.Size() / 2f, scale, spriteEffects, 0f);
 +			spriteBatch.Draw(npcPortraitBackground.Value, vector, rectangle, chatBack, num5, rectangle.Size() / 2f, scale, spriteEffects, 0f);
  		NPC nPC = npc[LocalPlayer.talkNPC];
