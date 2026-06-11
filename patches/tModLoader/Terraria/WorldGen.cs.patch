@@ -108,6 +108,17 @@
  				}
  			}
  		}
+@@ -1324,7 +_,10 @@
+ 							if (SolidTile(n, num17))
+ 								num16++;
+ 
++							/*
+ 							if (Main.tile[n, num17].active() && (!SolidTile(n, num17) || Main.tile[n, num17].type == 10 || Main.tile[n, num17].type == 192 || Main.tile[n, num17].type == 384 || Main.tile[n, num17].type == 189 || Main.tile[n, num17].type == 196 || Main.tile[n, num17].type == 460 || Main.tile[n, num17].type == 48 || Main.tile[n, num17].type == 232 || (Main.tile[n, num17].type >= 0 && TileID.Sets.Boulders[Main.tile[n, num17].type])))
++							*/
++							if (Main.tile[n, num17].active() && (!SolidTile(n, num17) || TileLoader.IsClosedDoor(Main.tile[n, num17].type) || Main.tile[n, num17].type == 192 || Main.tile[n, num17].type == 384 || Main.tile[n, num17].type == 189 || Main.tile[n, num17].type == 196 || Main.tile[n, num17].type == 460 || Main.tile[n, num17].type == 48 || Main.tile[n, num17].type == 232 || (Main.tile[n, num17].type >= 0 && TileID.Sets.Boulders[Main.tile[n, num17].type])))
+ 								flag3 = true;
+ 						}
+ 
 @@ -3341,6 +_,7 @@
  	public static readonly int oceanDistance = 250;
  	public static readonly int beachDistance = 380;
@@ -481,6 +492,85 @@
  		worldCleared = true;
  	}
  
+@@ -6988,7 +_,10 @@
+ 				return false;
+ 		}
+ 
++		/*
+ 		if (Main.tile[x2, num3].type == 232 || Main.tile[x2, num3].type == 10)
++		*/
++		if (Main.tile[x2, num3].type == 232 || TileLoader.IsClosedDoor(Main.tile[x2, num3].type))
+ 			return false;
+ 
+ 		num3--;
+@@ -7003,7 +_,10 @@
+ 		if (Main.tile[x2, num3].nactive() || Main.tile[x2 - 1, num3].nactive() || Main.tile[x2 + 1, num3].nactive() || Main.tile[x2, num3 - 1].nactive() || Main.tile[x2 - 1, num3 - 1].nactive() || Main.tile[x2 + 1, num3 - 1].nactive() || Main.tile[x2, num3 - 2].nactive() || Main.tile[x2 - 1, num3 - 2].nactive() || Main.tile[x2 + 1, num3 - 2].nactive())
+ 			return false;
+ 
++		/*
+-		if (Main.tile[x2, num3 + 1].type == 10)
++		if (Main.tile[x2, num3 + 1].type == 10)]
++		*/
++		if (TileLoader.IsClosedDoor(Main.tile[x2, num3 + 1].type))
+ 			return false;
+ 
+ 		if (Main.tile[x2, num3 + 1].type == 48)
+@@ -7046,10 +_,16 @@
+ 				if (Main.dualDungeonsSeed)
+ 					num17 = 232;
+ 
++				/*
+ 				if (flag && (Main.tile[num13, num12].type == 10 || Main.tile[num13, num12].type == num17 || Main.tile[num13, num12 + 1].type == 10 || Main.tile[num13, num12 + 1].type == num17))
++				*/
++				if (flag && (TileLoader.IsClosedDoor(Main.tile[num13, num12].type) || Main.tile[num13, num12].type == num17 || TileLoader.IsClosedDoor(Main.tile[num13, num12 + 1].type) || Main.tile[num13, num12 + 1].type == num17))
+ 					flag = false;
+ 
++				/*
+ 				if (flag2 && (Main.tile[num14, num12].type == 10 || Main.tile[num14, num12].type == num17 || Main.tile[num14, num12 + 1].type == 10 || Main.tile[num14, num12 + 1].type == num17))
++				*/
++				if (flag2 && (TileLoader.IsClosedDoor(Main.tile[num14, num12].type) || Main.tile[num14, num12].type == num17 || TileLoader.IsClosedDoor(Main.tile[num14, num12 + 1].type) || Main.tile[num14, num12 + 1].type == num17))
+ 					flag2 = false;
+ 
+ 				int num18 = 0;
+@@ -7091,7 +_,10 @@
+ 				if (Main.tile[num11, num12].type == 237)
+ 					return false;
+ 
++				/*
+ 				if (Main.tile[num11, num12].type == 10)
++				*/
++				if (TileLoader.IsClosedDoor(Main.tile[num11, num12].type))
+ 					return false;
+ 
+ 				if (!SolidTileAllowBottomSlope(x2, num3 + 1))
+@@ -7188,7 +_,10 @@
+ 				if (Main.tile[num4, num5].type == 237)
+ 					return false;
+ 
++				/*
+ 				if (Main.tile[num4, num5].type == 10)
++				*/
++				if (TileLoader.IsClosedDoor(Main.tile[num4, num5].type))
+ 					return false;
+ 
+ 				if (Main.tile[num4, num5].wall != 87)
+@@ -7549,10 +_,16 @@
+ 				if (flag6 && !SolidTile(num29, num27 + 1))
+ 					flag6 = false;
+ 
++				/*
+ 				if (flag5 && ((Main.tile[num28, num27].active() && (Main.tile[num28, num27].type == 10 || Main.tile[num28, num27].type == 48)) || (Main.tile[num28, num27 + 1].active() && (Main.tile[num28, num27 + 1].type == 10 || Main.tile[num28, num27 + 1].type == 48))))
++				*/
++				if (flag5 && ((Main.tile[num28, num27].active() && (TileLoader.IsClosedDoor(Main.tile[num28, num27].type) || Main.tile[num28, num27].type == 48)) || (Main.tile[num28, num27 + 1].active() && (TileLoader.IsClosedDoor(Main.tile[num28, num27 + 1].type) || Main.tile[num28, num27 + 1].type == 48))))
+ 					flag5 = false;
+ 
++				/*
+ 				if (flag6 && ((Main.tile[num29, num27].active() && (Main.tile[num29, num27].type == 10 || Main.tile[num29, num27].type == 48)) || (Main.tile[num29, num27 + 1].active() && (Main.tile[num29, num27 + 1].type == 10 || Main.tile[num29, num27 + 1].type == 48))))
++				*/
++				if (flag6 && ((Main.tile[num29, num27].active() && (TileLoader.IsClosedDoor(Main.tile[num29, num27].type) || Main.tile[num29, num27].type == 48)) || (Main.tile[num29, num27 + 1].active() && (TileLoader.IsClosedDoor(Main.tile[num29, num27 + 1].type) || Main.tile[num29, num27 + 1].type == 48))))
+ 					flag6 = false;
+ 
+ 				int num32 = 0;
 @@ -8036,8 +_,17 @@
  		}
  	}
@@ -813,6 +903,44 @@
  					flag4 = true;
  
  				if (!flag3) {
+@@ -23783,12 +_,18 @@
+ 					style = 13;
+ 
+ 				if (num11 <= num + 4 && !flag4) {
++					/*
+ 					if (Main.tile[num11 - 1, num10].type == 10 || Main.tile[num11 + 1, num10].type == 10) {
++					*/
++					if (TileLoader.IsClosedDoor(Main.tile[num11 - 1, num10].type) || TileLoader.IsClosedDoor(Main.tile[num11 + 1, num10].type)) {
+ 						flag4 = true;
+ 					}
+ 					else if (genRand.Next(3) == 0) {
+ 						PlaceTile(num11, num10, 10, mute: true, forced: false, -1, style);
++						/*
+ 						if (Main.tile[num11, num10].type == 10)
++						*/
++						if (TileLoader.IsClosedDoor(Main.tile[num11, num10].type))
+ 							flag4 = true;
+ 					}
+ 				}
+@@ -23796,12 +_,18 @@
+ 				if (num11 < num2 - 4 || flag5)
+ 					continue;
+ 
++				/*
+ 				if (Main.tile[num11 - 1, num10].type == 10 || Main.tile[num11 + 1, num10].type == 10) {
++				*/
++				if (TileLoader.IsClosedDoor(Main.tile[num11 - 1, num10].type) || TileLoader.IsClosedDoor(Main.tile[num11 + 1, num10].type)) {
+ 					flag5 = true;
+ 				}
+ 				else if (genRand.Next(3) == 0) {
+ 					PlaceTile(num11, num10, 10, mute: true, forced: false, -1, style);
++					/*
+ 					if (Main.tile[num11, num10].type == 10)
++					*/
++					if (TileLoader.IsClosedDoor(Main.tile[num11, num10].type))
+ 						flag5 = true;
+ 				}
+ 			}
 @@ -24198,7 +_,7 @@
  	{
  		int treeHeight = 1;
@@ -1024,6 +1152,39 @@
  									flag2 = true;
  									break;
  								}
+@@ -28340,7 +_,10 @@
+ 					bool flag7 = true;
+ 					for (int num121 = num116 - num120; num121 < num116 + num120; num121++) {
+ 						for (int num122 = num117 - num120; num122 < num117 + num120; num122++) {
++							/*
+ 							if (Main.tile[num121, num122].active() && (Main.tile[num121, num122].type == 10 || Main.tile[num121, num122].type == 237)) {
++							*/
++							if (Main.tile[num121, num122].active() && (TileLoader.IsClosedDoor(Main.tile[num121, num122].type) || Main.tile[num121, num122].type == 237)) {
+ 								flag7 = false;
+ 								break;
+ 							}
+@@ -28398,7 +_,10 @@
+ 					bool flag8 = true;
+ 					for (int num128 = num116 - num127; num128 < num116 + num127; num128++) {
+ 						for (int num129 = num117 - num127; num129 < num117 + num127; num129++) {
++							/*
+ 							if (Main.tile[num128, num129].active() && Main.tile[num128, num129].type == 10) {
++							*/
++							if (Main.tile[num128, num129].active() && TileLoader.IsClosedDoor(Main.tile[num128, num129].type)) {
+ 								flag8 = false;
+ 								break;
+ 							}
+@@ -29361,7 +_,10 @@
+ 				if (TileID.Sets.Paintings[Main.tile[l, m].type])
+ 					return false;
+ 
++				/*
+ 				if (Main.tile[l, m].type == 10)
++				*/
++				if (TileLoader.IsClosedDoor(Main.tile[l, m].type))
+ 					return false;
+ 
+ 				if (Main.tile[l, m].type == 19)
 @@ -29652,12 +_,27 @@
  		}
  	}
@@ -2846,6 +3007,17 @@
  	public static bool SolidTileAllowBottomSlope(int i, int j)
  	{
  		try {
+@@ -59521,7 +_,10 @@
+ 			bool flag6 = true;
+ 			for (int num51 = num20; num51 < num21; num51++) {
+ 				for (int num52 = num50 - 3; num52 <= num50 + 3; num52++) {
++					/*
+ 					if (Main.tile[num52, num51].active() && (!SolidTile(num52, num51) || Main.tile[num52, num51].type == 10))
++					*/
++					if (Main.tile[num52, num51].active() && (!SolidTile(num52, num51) || TileLoader.IsClosedDoor(Main.tile[num52, num51].type)))
+ 						flag6 = false;
+ 				}
+ 			}
 @@ -60001,10 +_,21 @@
  
  	public static void UpdateWorld()

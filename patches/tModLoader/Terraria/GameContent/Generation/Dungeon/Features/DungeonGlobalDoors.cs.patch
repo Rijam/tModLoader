@@ -1,0 +1,21 @@
+--- src/TerrariaNetCore/Terraria/GameContent/Generation/Dungeon/Features/DungeonGlobalDoors.cs
++++ src/tModLoader/Terraria/GameContent/Generation/Dungeon/Features/DungeonGlobalDoors.cs
+@@ -1,6 +_,7 @@
+ using System;
+ using Terraria.DataStructures;
+ using Terraria.ID;
++using Terraria.ModLoader;
+ using Terraria.Utilities;
+ 
+ namespace Terraria.GameContent.Generation.Dungeon.Features;
+@@ -87,7 +_,10 @@
+ 					int num15 = num10 + 10;
+ 					for (int k = num12; k < num13; k++) {
+ 						for (int l = num14; l < num15; l++) {
++							/*
+ 							if (Main.tile[k, l].active() && Main.tile[k, l].type == 10) {
++							*/
++							if (Main.tile[k, l].active() && TileLoader.IsClosedDoor(Main.tile[k, l].type)) {
+ 								flag = false;
+ 								break;
+ 							}

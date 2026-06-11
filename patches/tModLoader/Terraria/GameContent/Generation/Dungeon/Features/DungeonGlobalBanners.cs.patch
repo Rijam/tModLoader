@@ -1,0 +1,21 @@
+--- src/TerrariaNetCore/Terraria/GameContent/Generation/Dungeon/Features/DungeonGlobalBanners.cs
++++ src/tModLoader/Terraria/GameContent/Generation/Dungeon/Features/DungeonGlobalBanners.cs
+@@ -1,6 +_,7 @@
+ using System;
+ using Terraria.DataStructures;
+ using Terraria.ID;
++using Terraria.ModLoader;
+ using Terraria.Utilities;
+ 
+ namespace Terraria.GameContent.Generation.Dungeon.Features;
+@@ -56,7 +_,10 @@
+ 			bool flag = true;
+ 			for (int j = num4 - 1; j <= num4 + 1; j++) {
+ 				for (int k = num5; k <= num5 + 3; k++) {
++					/*
+ 					if (Main.tile[j, k].active() && (Main.tile[j, k].type == 10 || Main.tile[j, k].type == 11 || Main.tile[j, k].type == 91))
++					*/
++					if (Main.tile[j, k].active() && (TileLoader.IsClosedDoor(Main.tile[j, k].type) || TileLoader.OpenDoorID(Main.tile[j, k]) >= 0 || Main.tile[j, k].type == 91))
+ 						flag = false;
+ 				}
+ 			}
