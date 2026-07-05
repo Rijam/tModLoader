@@ -1,4 +1,6 @@
+using ExampleMod.Content.Biomes;
 using Terraria;
+using Terraria.GameContent.FishDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,6 +13,26 @@ namespace ExampleMod.Content.Items
 			ItemID.Sets.CanBePlacedOnWeaponRacks[Type] = true; // All vanilla fish can be placed in a weapon rack.
 			ItemID.Sets.IsBasicFish[Type] = true; // Denotes this item as a fish for inventory sorting. Use IsQuestFish instead for quest fish.
 			Item.ResearchUnlockCount = 3;
+
+			/*
+			Main.FishDropsDB.Add(new FishDropRule() {
+				PossibleItems = [Type],
+				ChanceNumerator = 1,
+				ChanceDenominator = 2,
+				Rarity = AFishDropRulePopulator.Rarity.Common,
+				// Conditions = [new AFishDropRulePopulator.DelegateFishingCondition(context => context.Player.InModBiome<ExampleSurfaceBiome>())]
+				Conditions = []
+			});
+			*/
+		}
+
+		public override void FishDrop(GameContentFishDropPopulator populator) {
+			populator.Add(
+				AFishDropRulePopulator.Rarity.Common,
+				1,
+				2,
+				[Type]
+			);
 		}
 
 		public override void SetDefaults() {

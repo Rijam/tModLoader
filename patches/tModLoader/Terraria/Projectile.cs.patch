@@ -1410,6 +1410,16 @@
  				PopupText.AssignAsSonarText(PopupText.NewText(PopupTextContext.SonarAlert, fisher.rolledEnemySpawn, base.Center, stay5TimesLonger: false));
  				SoundEngine.PlaySound(SoundID.SonarPotion, position);
  			}
+@@ -16582,6 +_,9 @@
+ 	private void FishingCheck_RollItemDrop(ref FishingAttempt fisher)
+ 	{
+ 		fisher.rolledItemDrop = Main.FishDropsDB.TryGetItemDropType(_context);
++
++		Main.NewText($"rolledItemDrop {fisher.rolledItemDrop} [i:{fisher.rolledItemDrop}]");
++
+ 		if (fisher.rolledItemDrop != 0) {
+ 			if (Main.player[owner].sonarPotion) {
+ 				ParticleOrchestrator.RequestParticleSpawn(clientOnly: true, ParticleOrchestraType.FakeFish, new ParticleOrchestraSettings {
 @@ -17578,6 +_,9 @@
  					return 0.77f;
  				case "Random":

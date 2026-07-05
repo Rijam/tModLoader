@@ -1,14 +1,15 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Content;
-using ReLogic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text.RegularExpressions;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
+using ReLogic.Utilities;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.GameContent.FishDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader.Core;
@@ -1541,5 +1542,10 @@ ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float const
 	public virtual bool ModifyEquipTextureDraw(ref PlayerDrawSet drawInfo, ref DrawData drawData, EquipTexture equipTexture, string methodName)
 	{
 		return true;
+	}
+
+	public virtual void FishDrop(GameContentFishDropPopulator populator)
+	{
+
 	}
 }

@@ -1,0 +1,14 @@
+--- src/TerrariaNetCore/Terraria/GameContent/FishDropRules/FishDropRuleList.cs
++++ src/tModLoader/Terraria/GameContent/FishDropRules/FishDropRuleList.cs
+@@ -24,6 +_,11 @@
+ 			FishDropRule fishDropRule = _rules[i];
+ 			if (fishDropRule.MeetsConditions(context, forDisplay: true)) {
+ 				int itemType = 0;
++
++				foreach (int item in fishDropRule.PossibleItems) {
++					Main.NewText($"  GetDisplayableDrops [i:{item}]");
++				}
++
+ 				if (fishDropRule.PossibleItems.Length != 0)
+ 					itemType = context.Random.NextFromList(fishDropRule.PossibleItems);
+ 

@@ -1,4 +1,6 @@
+using ExampleMod.Content.Biomes;
 using Terraria;
+using Terraria.GameContent.FishDropRules;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -19,6 +21,19 @@ namespace ExampleMod.Content.Items
 
 			DescriptionText = this.GetLocalization("Description");
 			CatchLocationText = this.GetLocalization("CatchLocation");
+
+			Main.FishDropsDB.Add(new FishDropRule() {
+				PossibleItems = [Type],
+				ChanceNumerator = 1,
+				ChanceDenominator = 2,
+				Rarity = AFishDropRulePopulator.Rarity.Uncommon,
+				Conditions = [
+					new FishingConditions.QuestFishCondition() {
+						CheckedType = Type
+					},
+					new AFishDropRulePopulator.DelegateFishingCondition(context => context.Player.gravDir < 0)
+				]
+			});
 		}
 
 		public override void SetDefaults() {

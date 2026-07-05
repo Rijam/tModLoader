@@ -1,0 +1,13 @@
+--- src/TerrariaNetCore/Terraria/GameContent/FishDropRules/FishDropRule.cs
++++ src/tModLoader/Terraria/GameContent/FishDropRules/FishDropRule.cs
+@@ -27,6 +_,10 @@
+ 		if (!MeetsConditions(context, forDisplay: false))
+ 			return false;
+ 
++		foreach (int item in PossibleItems) {
++			Main.NewText($"  Attempt [i:{item}]");
++		}
++
+ 		if (context.Random.Next(ChanceDenominator) >= ChanceNumerator)
+ 			return false;
+ 

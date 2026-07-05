@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent;
+using Terraria.GameContent.FishDropRules;
 using Terraria.GameContent.Items;
 using Terraria.GameContent.Prefixes;
 using Terraria.ID;
@@ -2220,6 +2221,13 @@ public static class ItemLoader
 
 		foreach (var g in HookExtractinatorUse.Enumerate()) {
 			g.ExtractinatorUse(extractType, extractinatorBlockType, ref resultType, ref resultStack);
+		}
+	}
+
+	public static void FishDrop(GameContentFishDropPopulator populator)
+	{
+		foreach (Item item in ContentSamples.ItemsByType.Values) {
+			item.ModItem?.FishDrop(populator);
 		}
 	}
 

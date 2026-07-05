@@ -74,6 +74,7 @@ namespace ExampleMod.Common.Players
 				}
 			}
 
+			/*
 			if (inWater && inExampleSurfaceBiome && attempt.common && Main.rand.NextBool()) {
 				// Add the ExampleBasicFish as a common catch in Example Surface Biome.
 				itemDrop = ModContent.ItemType<ExampleBasicFish>();
@@ -92,6 +93,7 @@ namespace ExampleMod.Common.Players
 					return; // While there is no more code that could roll a fish after this, we might add some in the future so it's best to return here
 				}
 			}
+			*/
 		}
 
 		public override bool? CanConsumeBait(Item bait) {

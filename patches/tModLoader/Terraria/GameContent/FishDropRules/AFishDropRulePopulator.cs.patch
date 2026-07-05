@@ -1,0 +1,90 @@
+--- src/TerrariaNetCore/Terraria/GameContent/FishDropRules/AFishDropRulePopulator.cs
++++ src/tModLoader/Terraria/GameContent/FishDropRules/AFishDropRulePopulator.cs
+@@ -4,7 +_,7 @@
+ 
+ public abstract class AFishDropRulePopulator
+ {
+-	private class DelegateFishingCondition : AFishingCondition
++	public class DelegateFishingCondition : AFishingCondition // TML: Made public
+ 	{
+ 		public delegate bool MatchCondition(FishingContext context);
+ 
+@@ -18,7 +_,7 @@
+ 		public override bool Matches(FishingContext context) => _condition(context);
+ 	}
+ 
+-	private class DelegateFishingRarityCondition : FishRarityCondition
++	public class DelegateFishingRarityCondition : FishRarityCondition // TML: Made public
+ 	{
+ 		public delegate bool MatchCondition(FishingContext context);
+ 
+@@ -32,7 +_,7 @@
+ 		public override bool Matches(FishingContext context) => _condition(context);
+ 	}
+ 
+-	protected class Rarity
++	public class Rarity // TML: Made public
+ 	{
+ 		public static FishRarityCondition Any = new DelegateFishingRarityCondition((FishingContext context) => true) {
+ 			HackedIsAny = true,
+@@ -62,6 +_,7 @@
+ 	}
+ 
+ 	private FishDropRuleList _list;
++	/* TML: Made public
+ 	protected AFishingCondition HardMode = new DelegateFishingCondition((FishingContext context) => IsHardmode(state: true));
+ 	protected AFishingCondition EarlyMode = new DelegateFishingCondition((FishingContext context) => IsHardmode(state: false));
+ 	protected AFishingCondition InLava = new DelegateFishingCondition((FishingContext context) => context.Fisher.inLava);
+@@ -99,13 +_,51 @@
+ 	protected AFishingCondition Water1000 = new DelegateFishingCondition((FishingContext context) => context.Fisher.waterTilesCount > 1000);
+ 	protected AFishingCondition BloodMoon = new DelegateFishingCondition((FishingContext context) => Main.bloodMoon);
+ 	protected AFishingCondition DidNotUseCombatBook = new DelegateFishingCondition((FishingContext context) => !NPC.combatBookWasUsed);
++	*/
++	public AFishingCondition HardMode = new DelegateFishingCondition((FishingContext context) => IsHardmode(state: true));
++	public AFishingCondition EarlyMode = new DelegateFishingCondition((FishingContext context) => IsHardmode(state: false));
++	public AFishingCondition InLava = new DelegateFishingCondition((FishingContext context) => context.Fisher.inLava);
++	public AFishingCondition InHoney = new DelegateFishingCondition((FishingContext context) => context.Fisher.inHoney);
++	public AFishingCondition Junk = new DelegateFishingCondition((FishingContext context) => context.Fisher.junk);
++	public AFishingCondition Crate = new DelegateFishingCondition((FishingContext context) => context.Fisher.crate);
++	public AFishingCondition AnyEnemies = new DelegateFishingCondition((FishingContext context) => context.Fisher.rolledEnemySpawn > 0);
++	public AFishingCondition CanFishInLava = new DelegateFishingCondition((FishingContext context) => context.Fisher.CanFishInLava);
++	public AFishingCondition Dungeon = new DelegateFishingCondition((FishingContext context) => context.Player.ZoneDungeon && NPC.downedBoss3);
++	public AFishingCondition Beach = new DelegateFishingCondition((FishingContext context) => context.Player.ZoneBeach);
++	public AFishingCondition Hallow = new DelegateFishingCondition((FishingContext context) => context.Player.ZoneHallow);
++	public AFishingCondition GlowingMushrooms = new DelegateFishingCondition((FishingContext context) => context.Player.ZoneGlowshroom);
++	public AFishingCondition TrueDesert = new DelegateFishingCondition((FishingContext context) => context.Player.ZoneDesert);
++	public AFishingCondition TrueSnow = new DelegateFishingCondition((FishingContext context) => context.Player.ZoneSnow);
++	public AFishingCondition Remix = new DelegateFishingCondition((FishingContext context) => Main.remixWorld);
++	public AFishingCondition Height1 = new DelegateFishingCondition((FishingContext context) => context.Fisher.heightLevel == 1);
++	public AFishingCondition Height1And2 = new DelegateFishingCondition((FishingContext context) => context.Fisher.heightLevel == 1 || context.Fisher.heightLevel == 2);
++	public AFishingCondition HeightAbove1 = new DelegateFishingCondition((FishingContext context) => context.Fisher.heightLevel > 1);
++	public AFishingCondition HeightAboveAnd1 = new DelegateFishingCondition((FishingContext context) => context.Fisher.heightLevel >= 1);
++	public AFishingCondition HeightUnder2 = new DelegateFishingCondition((FishingContext context) => context.Fisher.heightLevel < 2);
++	public AFishingCondition HeightAbove2 = new DelegateFishingCondition((FishingContext context) => context.Fisher.heightLevel > 2);
++	public AFishingCondition Height0 = new DelegateFishingCondition((FishingContext context) => context.Fisher.heightLevel == 0);
++	public AFishingCondition Height2 = new DelegateFishingCondition((FishingContext context) => context.Fisher.heightLevel == 2);
++	public AFishingCondition Height3 = new DelegateFishingCondition((FishingContext context) => context.Fisher.heightLevel == 3);
++	public AFishingCondition UnderRockLayer = new DelegateFishingCondition((FishingContext context) => (double)context.Fisher.Y >= Main.rockLayer);
++	public AFishingCondition Corruption = new DelegateFishingCondition((FishingContext context) => context.RolledCorruption);
++	public AFishingCondition Crimson = new DelegateFishingCondition((FishingContext context) => context.RolledCrimson);
++	public AFishingCondition Jungle = new DelegateFishingCondition((FishingContext context) => context.RolledJungle);
++	public AFishingCondition Snow = new DelegateFishingCondition((FishingContext context) => context.RolledSnow);
++	public AFishingCondition Desert = new DelegateFishingCondition((FishingContext context) => context.RolledDesert);
++	public AFishingCondition RolledHallowDesert = new DelegateFishingCondition((FishingContext context) => context.RolledInfectedDesert && context.Player.ZoneHallow);
++	public AFishingCondition OriginalOcean = new DelegateFishingCondition((FishingContext context) => IsOriginalOcean(context));
++	public AFishingCondition RemixOcean = new DelegateFishingCondition((FishingContext context) => context.RolledRemixOcean);
++	public AFishingCondition Ocean = new DelegateFishingCondition((FishingContext context) => context.RolledRemixOcean || IsOriginalOcean(context));
++	public AFishingCondition Water1000 = new DelegateFishingCondition((FishingContext context) => context.Fisher.waterTilesCount > 1000);
++	public AFishingCondition BloodMoon = new DelegateFishingCondition((FishingContext context) => Main.bloodMoon);
++	public AFishingCondition DidNotUseCombatBook = new DelegateFishingCondition((FishingContext context) => !NPC.combatBookWasUsed);
+ 
+ 	public AFishDropRulePopulator(FishDropRuleList list)
+ 	{
+ 		_list = list;
+ 	}
+ 
+-	protected void Add(FishRarityCondition tier, int chanceNominator, int chanceDenominator, int[] itemTypes, params AFishingCondition[] conditions)
++	public void Add(FishRarityCondition tier, int chanceNominator, int chanceDenominator, int[] itemTypes, params AFishingCondition[] conditions) // TML: Made public
+ 	{
+ 		FishDropRule rule = new FishDropRule {
+ 			PossibleItems = itemTypes,

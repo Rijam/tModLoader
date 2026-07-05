@@ -1,0 +1,19 @@
+--- src/TerrariaNetCore/Terraria/GameContent/FishDropRules/GameContentFishDropPopulator.cs
++++ src/tModLoader/Terraria/GameContent/FishDropRules/GameContentFishDropPopulator.cs
+@@ -9,6 +_,8 @@
+ 
+ 	public void Populate()
+ 	{
++		ModLoader.ItemLoader.FishDrop(this);
++		Add(Rarity.Common, 2, Terraria.ID.ItemID.ScryingOrb, Height1);
+ 		AddStopper(AnyEnemies);
+ 		LavaDrops();
+ 		HoneyDrops();
+@@ -27,6 +_,7 @@
+ 		DesertDrops();
+ 		FloatingIslandDrops();
+ 		SurfaceDrops();
++
+ 	}
+ 
+ 	private void RemixDrops()
