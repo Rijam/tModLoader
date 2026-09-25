@@ -1,0 +1,558 @@
+--- src/TerrariaNetCore/Terraria/GameContent/Drawing/ParticleOrchestraType.cs
++++ src/tModLoader/Terraria/GameContent/Drawing/ParticleOrchestraType.cs
+@@ -1,88 +_,555 @@
++using Terraria.ID;
++
+ namespace Terraria.GameContent.Drawing;
+ 
+ public enum ParticleOrchestraType : byte
+ {
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	Keybrand,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	FlameWaders,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	StellarTune,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	WallOfFleshGoatMountFlames,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	BlackLightningHit,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	RainbowRodHit,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	BlackLightningSmall,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	StardustPunch,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	PrincessWeapon,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	PaladinsHammer,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	NightsEdge,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	SilverBulletSparkle,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	TrueNightsEdge,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	Excalibur,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	TrueExcalibur,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	TerraBlade,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	ChlorophyteLeafCrystalPassive,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> hue of the particle ranging from 0 to 255. 511 or above will make the color gray.
++	/// </summary>
+ 	ChlorophyteLeafCrystalShot,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	BestReforge,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	PetExchange,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item175"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	SlapHand,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item16"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	FlyMeal,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item20"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	VampireOnFire,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item16"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	GasTrap,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> item ID to display
++	/// </summary>
+ 	ItemTransfer,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	ShimmerArrow,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> particle style. 0 for Nerdy Slime, 1 for Squire Slime, and 2 for Elder Slime.
++	/// </summary>
+ 	TownSlimeTransform,
++	/// <summary>
++	/// Always spawns on the player.
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	LoadoutChange,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	ShimmerBlock,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/>.X -> direction
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/>.Y -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	Digestion,
++	/// <summary>
++	/// Player <see cref="SoundID.Item178"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	WaffleIron,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	PooFly,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item29"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	ShimmerTownNPC,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	ShimmerTownNPCSend,
++	/// <summary>
++	/// Plays <see cref="SoundID.DeadCellsMushroomExplode"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	DeadCellsMushroomBoiExplosion,
++	/// <summary>
++	/// Plays <see cref="SoundID.DD2_MonkStaffGroundImpact"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	DeadCellsDownDashExplosion,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	DeadCellsBarnacleShotFiring,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> color.PackedValue
++	/// </summary>
+ 	BlueLightningSmall,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	ShadowOrbExplosion,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> the starting position of the laser
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> the destination of the laser
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> the density of the particles
++	/// </summary>
+ 	UFOLaser,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	DeadCellsBeheadedEffect,
++	/// <summary>
++	/// Only has an effect when hitting a solid tile.
++	/// <br/>Plays <see cref="SoundID.DeadCellsFlintRelease"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	DeadCellsFlint,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	DeadCellsBarrelExplosion,
++	/// <summary>
++	/// Only spawns above a valid projectile.
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> index of the projectile (projectile.whoAmI)
++	/// </summary>
+ 	DeadCellsMushroomBoiTargetFound,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	MoonLordWhipHit,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	MoonLordWhipEye,
++	/// <summary>
++	/// Plays the sounds and sets <see cref="Player.voiceOverride"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> <see cref="Player.voiceOverride"/> ID
++	/// <list type="number">
++	///		<item>Male player</item>
++	///		<item>Female player</item>
++	///		<item>DST Male</item>
++	///		<item>DST Female</item>
++	///		<item>Bell</item>
++	///		<item>Chicken</item>
++	///		<item>Frog</item>
++	///		<item>Goat</item>
++	///		<item>Retro</item>
++	///		<item>Cat</item>
++	///		<item>Dog</item>
++	///		<item>Turkey</item>
++	///		<item>Goblin</item>
++	///		<item>Crow</item>
++	///		<item>Balloon</item>
++	///		<item>Undead</item>
++	///		<item>Vampire</item>
++	///		<item>Fairy</item>
++	///		<item>Fart</item>
++	///		<item>Default hurt</item>
++	/// </list>
++	/// </summary>
+ 	PlayerVoiceOverrideSound,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	RainbowBoulder1,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	RainbowBoulder2,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	RainbowBoulder3,
++	/// <summary>
++	/// Plays <see cref="SoundID.RainbowBoulder"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	RainbowBoulder4,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> position of the bobber
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> item ID
++	/// </summary>
+ 	FakeFish,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	LakeSparkle,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	NatureFly,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> item ID
++	/// </summary>
+ 	FakeFishJump,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	ClassyCane,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> the starting position of the laser
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> the destination of the laser
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> the density of the particles
++	/// </summary>
+ 	MagnetSphereBolt,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> the starting position of the laser
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> the destination of the laser
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> the density of the particles
++	/// </summary>
+ 	HeatRay,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> the starting position of the laser
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> the destination of the laser
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> the density of the particles
++	/// </summary>
+ 	ShadowbeamHostile,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> the starting position of the laser
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> the destination of the laser
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> the density of the particles
++	/// </summary>
+ 	ShadowbeamFriendly,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	RainbowBoulderPetBounce,
++	/// <summary>
++	/// Plays <see cref="SoundID.LightningStrikeHit"/> if invoked by a player. Otherwise <see cref="SoundID.InstantThunder"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> color.PackedValue
++	/// </summary>
+ 	StormLightning,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> color.PackedValue
++	/// </summary>
+ 	StormlightningWindup,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> index of player 1, index of player 2
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	PaladinsShieldHit,
++	/// <summary>
++	/// Plays <see cref="SoundID.RainbowBoulder"/>.
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	HeroicisSetSpawnSound,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> length of the lightning
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	BlueLightningSmallLong,
++	/// <summary>
++	/// Plays the hit sound of the spawning NPC.
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> NPC net ID
++	/// </summary>
+ 	InScreenDungeonSpawn,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	CattivaHit,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item180"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> the spread of the dusts
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	PaladinsHammerShockwave,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item72"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/>.X -> the spread of the dusts. Negative values are uncapped.
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/>.Y -> the delay of the shockwave in ticks * 3
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	SnappingStone,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item39"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> the spread of the dusts
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	HarpyCharm,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item15"/> and <see cref="SoundID.ArcSurge"/>
++	/// <br>Always spawns from the hands on of the player.</br>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/>.X -> the see for the path the bolt takes.
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/>.Y -> the life of the bolt. 1 for long life, anything else for short life.
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> color.PackedValue
++	/// </summary>
+ 	ArcSurge,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	FormatC,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	SporeCloud,
++	/// <summary>
++	/// Plays <see cref="SoundID.PyroclasticStone"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	SnappingStoneMelee,
++	/// <summary>
++	/// Plays <see cref="SoundID.ArmletOfRuin"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/>.X -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/>.Y -> the delay of the shockwave in ticks * 3
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	SnappingStoneSummon,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item20"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> the spread of the dusts
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	PhoenixQuiver,
++	/// <summary>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> movement direction
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> color.PackedValue
++	/// </summary>
+ 	RedLightningSmall,
++	/// <summary>
++	/// Plays <see cref="SoundID.Item39"/>
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> position
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> the spread of the dusts
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	SeraphNecklace,
++	/// <summary>
++	/// Always spawns on the player.
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	SnappingStoneRecharge,
++	/// <summary>
++	/// Always spawns on the player.
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	PyroclasticStoneRecharge,
++	/// <summary>
++	/// Always spawns on the player.
++	/// <br/><see cref="ParticleOrchestraSettings.PositionInWorld"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.MovementVector"/> -> unused
++	/// <br/><see cref="ParticleOrchestraSettings.UniqueInfoPiece"/> -> unused
++	/// </summary>
+ 	ArmletOfRuinRecharge,
+ 	Count
+ }

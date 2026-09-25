@@ -8,6 +8,52 @@
  
  namespace Terraria.GameContent.Drawing;
  
+@@ -35,6 +_,13 @@
+ 	public static ParticlePool<StormLightningParticle> StormLightningParticles = new ParticlePool<StormLightningParticle>(20, GetNewStormLightningParticle);
+ 	private static SlotId[] _mushBoiExplosionSounds = new SlotId[3];
+ 
++	/// <summary>
++	/// 
++	/// </summary>
++	/// <param name="clientOnly"></param>
++	/// <param name="type"></param>
++	/// <param name="settings"></param>
++	/// <param name="overrideInvokingPlayerIndex"></param>
+ 	public static void RequestParticleSpawn(bool clientOnly, ParticleOrchestraType type, ParticleOrchestraSettings settings, int? overrideInvokingPlayerIndex = null)
+ 	{
+ 		settings.IndexOfPlayerWhoInvokedThis = (byte)Main.myPlayer;
+@@ -46,6 +_,11 @@
+ 			NetManager.Instance.SendToServer(NetParticlesModule.Serialize(type, settings));
+ 	}
+ 
++	/// <summary>
++	/// 
++	/// </summary>
++	/// <param name="type"></param>
++	/// <param name="settings"></param>
+ 	public static void BroadcastParticleSpawn(ParticleOrchestraType type, ParticleOrchestraSettings settings = default(ParticleOrchestraSettings))
+ 	{
+ 		settings.IndexOfPlayerWhoInvokedThis = (byte)Main.myPlayer;
+@@ -55,6 +_,11 @@
+ 			NetManager.Instance.Broadcast(NetParticlesModule.Serialize(type, settings));
+ 	}
+ 
++	/// <summary>
++	/// 
++	/// </summary>
++	/// <param name="type"></param>
++	/// <param name="settings"></param>
+ 	public static void BroadcastOrRequestParticleSpawn(ParticleOrchestraType type, ParticleOrchestraSettings settings = default(ParticleOrchestraSettings))
+ 	{
+ 		settings.IndexOfPlayerWhoInvokedThis = (byte)Main.myPlayer;
+@@ -80,6 +_,7 @@
+ 	private static ItemTransferParticle GetNewItemTransferParticle_ScreenSpace() => new ItemTransferParticle();
+ 	private static StormLightningParticle GetNewStormLightningParticle() => new StormLightningParticle();
+ 
++	///
+ 	public static void SpawnParticlesDirect(ParticleOrchestraType type, ParticleOrchestraSettings settings)
+ 	{
+ 		if (Main.netMode != 2) {
 @@ -739,7 +_,7 @@
  			for (int k = point.Y - 3; k <= point.Y + 3; k++) {
  				Tile tileSafely = Framing.GetTileSafely(j, k);
